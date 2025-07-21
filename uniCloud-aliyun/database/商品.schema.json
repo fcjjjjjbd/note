@@ -1,0 +1,134 @@
+// 商品详情页
+{
+  "bsonType": "object",
+  "required": [
+    "content",
+    "phone"
+  ],
+  "permission": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": true
+  },
+  "properties": {
+    "_id": {
+      "description": "存储文档 ID（用户 ID），系统自动生成"
+    },
+    "fenleiid": {
+      "bsonType": "string",
+      "description": "分类 id，参考`opendb-mall-categories`表",
+      "foreignKey": "goods_nav._id"
+    },
+    "goods_thumb": {
+      "bsonType": "string",
+      "description": "用于在列表显示一个商品缩略图",
+      "title": "封面地址",
+      "pattern": "^(http://|https://|/|./|@/)\\S",
+      "trim": "both"
+    },
+    "imageValue": {
+      "bsonType": "array",
+      "description": "商品详情页的图片地址数组"
+    },
+    "is_best": {
+      "bsonType": "bool",
+      "description": "是否首页推荐"
+    },
+    "address": {
+      "bsonType": "string",
+      "title": "商家地址信息",
+      "trim": "both"
+    },
+    "phone": {
+      "bsonType": "int",
+      "title": "商家电话",
+      "trim": "both"
+    },
+    "user_id": {
+      "bsonType": "string",
+      "description": "作者ID， 参考`uni-id-users` 表",
+      "foreignKey": "uni-id-users._id",
+      "defaultValue": {
+        "$env": "uid"
+      }
+    },
+    "review_uid": {
+      "bsonType": "string",
+      "description": "审核员人员， 参考`uni-id-users` 表",
+      "foreignKey": "uni-id-users._id"
+    },
+
+    "content": {
+      "bsonType": "string",
+      "title": "商品内容",
+      "trim": "both"
+    },
+    "title": {
+      "bsonType": "string",
+      "title": "商品标题",
+      "trim": "both"
+    },
+
+    "view_count": {
+      "bsonType": "int",
+      "title": "阅读数量",
+      "description": "阅读数量",
+      "defaultValue": 0
+    },
+    "like_count": {
+      "bsonType": "int",
+      "description": "喜欢数、点赞数",
+      "defaultValue": 0
+    },
+    "comment_count": {
+      "bsonType": "int",
+      "description": "评论数量",
+      "defaultValue": 0
+    },
+    "collect_count": {
+      "bsonType": "int",
+      "description": "评论数量",
+      "defaultValue": 0
+    },
+    "status": {
+      "bsonType": "int",
+      "title": "审核状态",
+      "defaultValue": 0,
+      "enum": [{
+          "value": 0,
+          "text": "审核中"
+        },
+        {
+          "value": 1,
+          "text": "审核通过"
+        },
+        {
+          "value": 2,
+          "text": "审核不通过"
+        }
+      ]
+    },
+    "feedback": {
+      "bsonType": "string",
+      "title": "反馈内容",
+      "trim": "both"
+    },
+    "publish_date": {
+      "bsonType": "timestamp",
+      "title": "发表时间",
+      "description": "发表时间",
+      "defaultValue": {
+        "$env": "now"
+      }
+    },
+    "publish_ip": {
+      "bsonType": "string",
+      "title": "发布鸡汤时IP地址",
+      "forceDefaultValue": {
+        "$env": "clientIP"
+      }
+    },
+    "version": "0.0.1"
+  }
+}

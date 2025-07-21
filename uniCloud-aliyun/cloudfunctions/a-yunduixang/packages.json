@@ -1,0 +1,15 @@
+{
+  "name": "payorder",
+  "dependencies": {
+    "self-utils": "file:../common/self-utils",
+    "uni-id-common": "file:../../../uni_modules/uni-id-common/uniCloud/cloudfunctions/common/uni-id-common"
+  },
+  "extensions": {
+    "uni-cloud-jql": {}
+  },
+  "cloudfunction-config": {
+    "triggers": [{
+      "config": "0 0 4 * * * *"
+    }]
+  }
+}

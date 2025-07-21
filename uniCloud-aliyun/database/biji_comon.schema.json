@@ -1,0 +1,101 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+  "bsonType": "object",
+  "required": [
+    "title",
+    "content"
+  ],
+  "permission": {
+    "read": true,
+    "create": "auth.uid != null",
+    "update": "doc.user_id==auth.uid",
+    "delete": "doc.user_id==auth.uid"
+  },
+  "properties": {
+    "_id": {
+      "description": "ID，系统自动生成"
+    },
+    "user_id": {
+      "bsonType": "string",
+      "description": "文章作者ID， 参考`uni-id-users` 表",
+      "foreignKey": "uni-id-users._id",
+      "defaultValue": {
+        "$env": "uid"
+      }
+    },
+
+    "imgarr": {
+      "maxLength": 9,
+      "bsonType": "array",
+      "arrayType": "file",
+      "fileMediaType": "image",
+      "title": "图片列表"
+    },
+    "icon": {
+      "bsonType": "file",
+      "title": "图标"
+    },
+    // 关联自己表
+    "reply_comment_id": {
+      "bsonType": "string",
+      "description": "被回复的评论ID，comment_type为1时有效",
+      "parentKey": "_id"
+    },
+    "sort": {
+      "bsonType": "int",
+      "title": "排序",
+      "description": "排序",
+      "defaultValue": 9
+    },
+    "mobile": {
+      "bsonType": "string",
+      "title": "联系电话",
+      "pattern": "^\\+?[0-9-]{3,20}$",
+      "trim": "both",
+      "minLength": 2,
+      "maxLength": 12
+    },
+    "article_status": {
+      "bsonType": "int",
+      "title": "文章状态",
+      "description": "文章状态：0 下架 1 已上架",
+      "defaultValue": 0,
+      "enum": [{
+          "value": 0,
+          "text": "下架"
+        },
+        {
+          "value": 1,
+          "text": "已上架"
+        }
+      ]
+    },
+    "category_id": {
+      "bsonType": "string",
+      "title": "分类",
+      "description": "分类 id，参考`uni-news-categories`表",
+      "foreignKey": "opendb-news-categories._id",
+      "enum": {
+        "collection": "opendb-news-categories",
+        "orderBy": "time desc",
+        "field": "name as text, _id as value"
+      }
+    },
+    "publish_ip": {
+      "bsonType": "string",
+      "title": "发布文章时IP地址",
+      "description": "发表时 IP 地址",
+      "forceDefaultValue": {
+        "$env": "clientIP"
+      }
+    },
+    "createTime": {
+      "bsonType": "timestamp",
+      "title": "发布时间",
+
+      "defaultValue": {
+        "$env": "now"
+      }
+    }
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "pages": [{
+      "path": "pages/index/index",
+
+      "style": {
+        "navigationBarTitleText": "uni-app",
+        "navigationStyle": "custom"
+        // 取消标题栏
+      }
+
+    },
+    {
+      "path": "pages/commone/commone",
+      "style": {
+        "navigationBarTitleText": "常用",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/scss-ya/scss-ya",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/html-ya/html-ya",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/js-ya/js-ya",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/ya-pages/ya-pages",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/action/action",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/form/form",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/search/search",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/app-ya/app-ya",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/pages=y/pages=y",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/user/user",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/popub/popub",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/vuexyy/vuexyy",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/js-v3/js-v3",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/unicloud/unicloud",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/cloud-ya/cloud-ya",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/login/login-withpwd",
+      "style": {
+        "navigationBarTitleText": "密码登录"
+      }
+    }, {
+      "path": "uni_modules/uni-id-pages/pages/register/register",
+      "style": {
+        "navigationBarTitleText": "注册"
+      }
+    },
+    {
+      "path": "pages/z-paging/z-paging",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/ss/ss",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/js_ff/js_ff",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/web/web",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/1/1",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/pay/pay",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/uniappApii/uniappApii",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/demo/demo",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/jql_unicloud/jql_unicloud",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/yufa_js/yufa_js",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "css-components/xuanzhuan_css/xuanzhuan_css",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/tools/tools",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/npm_use/npm_use",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    }
+  ,{
+    "path": "pages/biji_comon/add",
+    "style": {
+        "navigationBarTitleText": "新增"
+    }
+}
+,{
+    "path": "pages/biji_comon/edit",
+    "style": {
+        "navigationBarTitleText": "编辑"
+    }
+}
+,{
+    "path": "pages/biji_comon/list",
+    "style": {
+        "navigationBarTitleText": "列表"
+    }
+},
+{
+  "path" : "pages/0-1/0-1",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
+},
+{
+  "path" : "pages/aa/aa",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
+},
+{
+  "path" : "pages/ademo/ademo",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
+},
+{
+  "path" : "pages/ademo/ademo",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
+},
+{
+  "path" : "pages/ai/ai",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
+},
+{
+  "path" : "pages/ai/ai",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
+},
+{
+  "path" : "css/dd/dd",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
+},
+{
+  "path" : "az/az",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
+},
+{
+  "path" : "ads/ads",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
+}
+],
+  // 底部导航
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      }, {
+        "pagePath": "pages/addshopp/addshopp",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  },
+  // 分包2个 最大2m
+  "subPackages": [{
+    "root": "pages_manage",
+    "pages": [{
+        "path": "index/index",
+        "style": {
+          "navigationBarTitleText": "后台管理首页"
+        }
+      },
+      {
+        "path": "npm_use/npm_use",
+        "style": {
+          "navigationBarTitleText": ""
+        }
+      }
+    ]
+  }, {
+    "root": "uni_modules/uni-pay/pages",
+    "pages": [{
+      "path": "success/success",
+      "style": {
+        "backgroundColor": "#F8F8F8",
+        "navigationBarTitleText": "支付成功",
+        "navigationStyle": "custom"
+      }
+    }, {
+      "path": "ad-interactive-webview/ad-interactive-webview",
+      "style": {
+        "backgroundColor": "#F8F8F8",
+        "navigationBarTitleText": "ad"
+      }
+    }]
+  }],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  // v3 uview plus配置
+  "easycom": {
+    "custom": {
+      "^u--(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
+      "^up-(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
+      "^u-([^-].*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue"
+    }
+  },
+
+  // 需要登录才能进入页面 .*全部字段
+  "uniIdRouter": {
+    // #ifdef MP-WEIXIN
+    "loginPage": "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
+    // #endif
+    // #ifndef MP-WEIXIN
+    "loginPage": "uni_modules/uni-id-pages/pages/login/login-withpwd",
+    // #endif
+    "needLogin": ["pages/goods/.*", "pages/detail/.*"],
+    "resToLogin": true
+  }
+}

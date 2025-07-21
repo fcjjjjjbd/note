@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <!-- 地圖 -->
+    <script type="text/javascript">
+      window._AMapSecurityConfig = {
+        securityJsCode: '创建应用的安全密钥',
+      }
+    </script>
+    <script src="https://webapi.amap.com/loader.js"></script>
+    <!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div id="container"></div>
+    </div>
+  </body>
+
+  <!-- uni 的 SDK -->
+  <script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js"></script>
+
+  <script type="module">
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          map: '',
+          currentLat: '',
+          currentLng: '',
+          stationData: []
+        }
+      },
+      mounted() {
+        this.init();
+      },
+      methods: {
+        //创建地图，并遍历maker数组创建maker标点
+        init() {
+          // console.log('src传递需要的参数', window.location.search);
+          const params = new URLSearchParams(window.location.search);
+          //定位的经纬度 b
+          const lng = params.get('lng');
+          const lat = params.get('lat');
+          //定位的经纬度 e
+
+          //规划路线需要的终点经纬度 b
+          const endLng = params.get('endlng');
+          const endLat = params.get('endlat');
+          //规划路线需要的终点经纬度 e
+
+          //需要创建的maker标点数据 b
+          if (params.get('stationData')) {
+            const stationData = JSON.parse(decodeURIComponent(params.get('stationData')));
+            localStorage.setItem('stationData', JSON.stringify(stationData));
+          }
+          //需要创建的maker标点数据 e
+
+          this.currentLng = lng;
+          this.currentLat = lat;
+
+          AMapLoader.load({
+            "key": "申请好的Web端开发者Key，首次调用 load 时必填",
+            "version": "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+            "plugins": ['AMap.Driving'], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+            "AMapUI": { // 是否加载 AMapUI，缺省不加载
+              "version": '1.1', // AMapUI 版本
+              "plugins": ['overlay/SimpleMarker'], // 需要加载的 AMapUI ui插件
+            },
+            "Loca": { // 是否加载 Loca， 缺省不加载
+              "version": '2.0' // Loca 版本
+            },
+          }).then((AMap) => {
+            this.map = new AMap.Map('container', {
+              center: [lng, lat],
+              resizeEnable: true,
+              zoom: 12 //地图显示的缩放级别
+            });
+            if (endLng && endLat) {
+              this.createDriving(endLng, endLat);
+            } else {
+              // 点标记显示内容，HTML要素字符串
+              var markerContent = '' +
+                `<div class="custom-content-marker-current">
+							           <img src="../../static/coordinate.png">
+							    </div>`;
+              // 根据经纬度标记地理位置
+              var marker = new AMap.Marker({
+                position: new AMap.LngLat(lng, lat),
+                content: markerContent,
+                title: '定位' //可以自定义icon图标展示
+              });
+              // 将创建的点标记添加到已有的地图实例
+              this.map.add(marker);
+
+              // 获取数据渲染到页面上
+              let obj = JSON.parse(localStorage.getItem('stationData'));
+              this.stationData = obj;
+              this.stationData.forEach((item, index) => {
+                // 点标记显示内容，HTML要素字符串
+                var markerContent = '' +
+                  `<div class="custom-content-marker">
+									           <img src="../../static/stationAddress.png">
+									    </div>`;
+                // 根据经纬度标记地理位置
+                var marker = new AMap.Marker({
+                  position: new AMap.LngLat(item.longitude, item.latitude),
+                  content: markerContent,
+                  // title: '充电桩定位' //可以自定义icon图标展示
+                });
+                // 点击maker创建当前坐标到maker的坐标的路线规划
+                let onMarkerClick = this.debounce((e) => {
+                  this.createDriving(e.lnglat.lng, e.lnglat.lat);
+                }, 100);
+                // 将创建的点标记添加到已有的地图实例
+                this.map.add(marker);
+                marker.on("click", onMarkerClick); //绑定click事件
+              });
+            }
+          }).catch((e) => {
+            console.error(e); //加载错误提示
+          });
+        },
+        //创建路线规划
+        createDriving(endlng, endlat) {
+          this.map = new AMap.Map('container', {
+            center: [this.currentLng, this.currentLat],
+            resizeEnable: true,
+            zoom: 15 //地图显示的缩放级别
+          });
+          // 构造路线导航类
+          var driving = new AMap.Driving({
+            map: this.map,
+          });
+          console.log(this.currentLng, this.currentLat, endlng, endlat);
+          // 根据起终点经纬度规划驾车导航路线
+          driving.search(new AMap.LngLat(this.currentLng, this.currentLat), new AMap.LngLat(endlng, endlat),
+            function(status, result) {
+              if (status === 'complete') {
+                console.log('绘制驾车路线完成')
+                // console.log(status,'status')
+              } else {
+                console.log('获取驾车数据失败：' + result)
+              }
+            });
+        },
+        //防抖
+        debounce(func, wait) {
+          let timeout;
+          return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+          };
+        }
+
+      }
+    })
+  </script>
+
+  <style scoped>
+    * {
+      margin: 0;
+    }
+
+    body,
+    html,
+    #container {
+      width: 100vw;
+      height: 100vh
+    }
+
+    #panel {
+      position: fixed;
+      background-color: white;
+      max-height: 90%;
+      overflow-y: auto;
+      top: 10px;
+      right: 10px;
+      width: 280px;
+    }
+
+    #panel .amap-call {
+      background-color: #009cf9;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    #panel .amap-lib-driving {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* maker样式 */
+    .custom-content-marker-current {
+      position: relative;
+      width: 25px;
+      height: 34px;
+      overflow: hidden;
+    }
+
+    .custom-content-marker {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+    }
+
+    .custom-content-marker-current img,
+    .custom-content-marker img {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* maker样式 */
+  </style>
+</html>

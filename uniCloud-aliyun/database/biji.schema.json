@@ -1,0 +1,10 @@
+注释
+索引: 1 有效查询效率高, 2 字段属性设置唯一性
+description, lable, 后台显示的字段
+去除前后空格 "trim": "both"
+
+权限
+doc从数据库获取的数据, auth从客户端获取的数据
+当前已登录用户 = auth.uid
+auth.uid != null(当前用户已登录),
+  auth.uid == doc.user_id(auth表示正在执行操作的用户对象, doc匹配记录内容 / 查询条件数据库),
