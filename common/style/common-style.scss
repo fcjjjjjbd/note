@@ -1,0 +1,19 @@
+view,text,swiper,swiper-item,input,textarea{
+	box-sizing: border-box;
+}
+image{
+	width: 100rpx;
+	height: 100rpx;
+}
+// 苹果底部区域
+.safe-area-bottom{
+  width: 100%;
+  height: env(safe-area-inset-bottom);
+   background: #fff;
+}
+ // 加载状态css
+  .loadingLayout{
+    padding: 30rpx 0;
+    text-align: center;
+  }
+ 
