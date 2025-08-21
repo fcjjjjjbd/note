@@ -8,6 +8,7 @@ css辅助 border:1px solid black;
 
   uni图标 <uni-icons type="contact" size="30"></uni-icons>
   uview <u-icon name="photo" uor="#2979ff" size="28"></u-icon>
+  iconfont  <text class="iconfont icon-earth" />
   选中图标变化 active class="box active" :class="item.va == Value ? 'active':''"
   边框 border:1px solid black;
   圆形 border-radius: 50%; overflow: hidden;阴影
