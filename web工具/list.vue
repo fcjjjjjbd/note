@@ -9,7 +9,7 @@
     ctrlb隐藏显示目录
     ,底部调试终端ctrlj,ai辅助ctrli,设置ctrl,切换模式ctrl.
     cp顶部搜索文件目录>快捷设置 widowh语音输入
-    ,截屏田+shift+s
+    ,截屏开始键+shift+s
     搜索ctrl+shift+f(工作区文件搜索),ctrl+f当前页面
     -F视频选项型号,选择(id+id),-f下载视频 ,本地存储位置(title)s.%(ext), yt-dlp
     -o "C:\tv\%(title)s.%(ext)s" -F
