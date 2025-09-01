@@ -288,6 +288,13 @@
   {
     "navigationBarTitleText" : ""
   }
+},
+{
+  "path" : "trae/user_rules/user_rules",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
 }
 ],
   // 底部导航
