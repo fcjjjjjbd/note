@@ -13,19 +13,19 @@
     搜索ctrl+shift+f(工作区文件搜索),ctrl+f当前页面
     -F视频选项型号,选择(id+id),-f下载视频 ,本地存储位置(title)s.%(ext), yt-dlp
     -o "C:\tv\%(title)s.%(ext)s" -F
-    https://www.bilibili.com/list/watchlater?bvid=BV1z34y1V7TZ&oid=831762661
     vpn机场集合 https://jichanggo.com/
     https://jstofu.com/2023-eight-best-windows-accelerators-recommended.html
-    免费 https://xn--4gq62f52gdss.com/#/dashboard 拦截器阻止网站插件block
-    https://www.youtube.com/watch?v=BoMLQVgHRkQ
+
   </view>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+  import {
+    ref,
+    computed
+  } from "vue";
 </script>
 
 <style lang="scss" scoped>
-.self {
-}
+  .self {}
 </style>
