@@ -1,4 +1,4 @@
-//校验token是否存在,和云端一致 需关联公共函数
+//校验token是否存在,和云端一致 需关联公共函数uid
 const uniID = require("uni-id-common");
 const getUserInfo = async function(that) {
   const token = that.getUniIdToken()

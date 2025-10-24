@@ -1,13 +1,14 @@
-<strong></strong><template>
-  聚合(文档微信云开发)
+<template>
+  uni聚合=微信聚合文档
+  https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloud/reference-sdk-api/database/Command.html
   仅用于复杂查询，不可执行增删改
 </template>
-addFields拼接多个字段值 tv7.2/13
+
 <script>
+  addFields拼接多个字段值 tv7 .2 / 13
   $ 1 字段路径 字段属性值
+  pipeline里可以嵌套lookup
 
-
-    // pipeline里可以嵌套lookup
     .lookup({
         pipeline: $.pipeline().match(dbCmd.expr($.eq(['$reply_parent_id', '$$uuid']))) = jql where
           .lookup({

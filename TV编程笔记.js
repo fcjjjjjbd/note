@@ -1,10 +1,6 @@
-// 老师: 咸虾米xm, 康文昌
-// 平台: bli, 网易课堂 
-<
-<
 view >
-下拉框分类 uni-data-select xm-csdn
-  数据库数据导入导出 tv - admin3 .3
+  下拉框分类 uni - data - select xm - csdn
+数据库数据导入导出 tv - admin3 .3
 用户联系微信客服(开发者) soup10 .2 / 3.40
 nextTick() 鸡汤6 .10 / 7
 app全局常用的方法引入globalPropert 鸡汤6 .10 / 9.19
@@ -29,6 +25,7 @@ appid3 pinia 本地缓存区别， 存储函数复杂数据，， 模块统一�
 iconfont图标 鸡汤33
 配置登录方式， 微信短信登录 商城62 1010
 隐视一键登录 鸡汤10 .3
-  微信支付退款查看订单 xm
- 页面组件 壁纸后台2.6
-  /view> 
+微信支付退款查看订单 xm
+页面组件 壁纸后台2 .6
+  /
+  view >

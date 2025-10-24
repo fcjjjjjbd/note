@@ -72,14 +72,8 @@
     },
     "category_id": {
       "bsonType": "string",
-      "title": "分类",
-      "description": "分类 id，参考`uni-news-categories`表",
-      "foreignKey": "opendb-news-categories._id",
-      "enum": {
-        "collection": "opendb-news-categories",
-        "orderBy": "time desc",
-        "field": "name as text, _id as value"
-      }
+      "description": "分类 id",
+      "foreignKey": "JLJ-mall-category._id"
     },
     "publish_ip": {
       "bsonType": "string",

@@ -1,7 +1,3 @@
-<template>
-  纯洁模板
-</template>
-
 <script setup>
   const db = uniCloud.database()
   const dbCmd = db.command
@@ -138,3 +134,5 @@
 
     })
 </script>
+<template>
+</template>
