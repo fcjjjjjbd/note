@@ -19,18 +19,18 @@
 
   const userinfoid = uniCloud.getCurrentUserInfo() // 获取当前用户信息
   const ncloubobj = uniCloud.importObject("db", {
-      customUI: true
-    }) <
-    !--#ifndef MP - WEIXIN-- > html <
-    !--#endif-- >
-    // #ifdef MP-WEIXIN js
-    // #endif
-    // #ifdef APP-PLUS  || H5  css
-    // #endif
-    // 浅拷贝没影响,赋值影响原始数据的 
-    let parms = {
-      ...formData.value
-    }
+    customUI: true
+  })
+
+
+  // #ifdef MP-WEIXIN 
+  // #endif
+  // #ifdef APP-PLUS  || H5  
+  // #endif
+  // 浅拷贝没影响,赋值影响原始数据的 
+  let parms = {
+    ...formData.value
+  }
   delete parms.name
   // 解构
   let {

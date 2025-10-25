@@ -13,6 +13,9 @@ export function showToast({
     posttion
   })
 }
+export function hideLoading() {
+  uni.hideLoading();
+}
 //判断管理员角色是否
 export function isAdminRole() {
   return uniCloud.getCurrentUserInfo().role.includes('admin') ? true : false;

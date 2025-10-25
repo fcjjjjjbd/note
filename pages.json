@@ -295,6 +295,13 @@
   {
     "navigationBarTitleText" : ""
   }
+},
+{
+  "path" : "pages-一本万利/vue3-setup/vue3-setup",
+  "style" : 
+  {
+    "navigationBarTitleText" : ""
+  }
 }
 ],
   // 底部导航
