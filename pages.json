@@ -207,103 +207,89 @@
       "style": {
         "navigationBarTitleText": ""
       }
-    }
-  ,{
-    "path": "pages/biji_comon/add",
-    "style": {
+    }, {
+      "path": "pages/biji_comon/add",
+      "style": {
         "navigationBarTitleText": "新增"
-    }
-}
-,{
-    "path": "pages/biji_comon/edit",
-    "style": {
+      }
+    }, {
+      "path": "pages/biji_comon/edit",
+      "style": {
         "navigationBarTitleText": "编辑"
-    }
-}
-,{
-    "path": "pages/biji_comon/list",
-    "style": {
+      }
+    }, {
+      "path": "pages/biji_comon/list",
+      "style": {
         "navigationBarTitleText": "列表"
+      }
+    },
+    {
+      "path": "pages/0-1/0-1",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/aa/aa",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/ademo/ademo",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/ademo/ademo",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/ai/ai",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/ai/ai",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "css/dd/dd",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "az/az",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "ads/ads",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "trae/user_rules/user_rules",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages-一本万利/vue3-setup/vue3-setup",
+      "style": {
+        "navigationBarTitleText": ""
+      }
     }
-},
-{
-  "path" : "pages/0-1/0-1",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-},
-{
-  "path" : "pages/aa/aa",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-},
-{
-  "path" : "pages/ademo/ademo",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-},
-{
-  "path" : "pages/ademo/ademo",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-},
-{
-  "path" : "pages/ai/ai",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-},
-{
-  "path" : "pages/ai/ai",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-},
-{
-  "path" : "css/dd/dd",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-},
-{
-  "path" : "az/az",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-},
-{
-  "path" : "ads/ads",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-},
-{
-  "path" : "trae/user_rules/user_rules",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-},
-{
-  "path" : "pages-一本万利/vue3-setup/vue3-setup",
-  "style" : 
-  {
-    "navigationBarTitleText" : ""
-  }
-}
-],
+  ],
   // 底部导航
   "tabBar": {
     "color": "#000000",
@@ -343,8 +329,7 @@
       "path": "success/success",
       "style": {
         "backgroundColor": "#F8F8F8",
-        "navigationBarTitleText": "支付成功",
-        "navigationStyle": "custom"
+        "navigationBarTitleText": "支付成功"
       }
     }, {
       "path": "ad-interactive-webview/ad-interactive-webview",
