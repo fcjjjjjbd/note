@@ -7,7 +7,7 @@
 module.exports向外导出一个对象
 uniCloud.request = uni.request
 
-操作顺序.where().filed("name,age").skip().limit().orderBy("time desc").updata({});
+操作顺序.where().filed("name,age").orderBy("time desc").skip().limit().get({});
 const db = uniCloud.database(); // 连接云数据库
 .where(` user_id=='${UserStore.userInfo._id}'`).where(` user_id==$cloudEnv_uid && status!=0 `)
   .where(`status == 1 && _id in ${arr} `)

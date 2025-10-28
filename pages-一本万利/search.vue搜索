@@ -1,0 +1,193 @@
+<!-- 搜索页面 uni-search-bar   -->
+<template>
+  <view class="searchLayout">
+    <z-paging ref="paging" v-model="searchdata" @query="queryList" :auto="false" :default-page-size="6">
+      <view class="" style="display: flex; align-items: center">
+        <view class="" style="flex: 1">
+          <uni-search-bar @confirm="onSearch" cancelButton="none" @cancel="onClear" @clear="onClear" focus
+            placeholder="搜索" v-model="query.keyword">
+          </uni-search-bar>
+        </view>
+        <view style="padding: 10rpx; font-size: 39rpx; color: red" @click="onSearch">
+          搜索</view>
+      </view>
+
+      <view v-if="!searchdata.length || nodata">
+        <view class="history" v-if="searchdata.length == 0">
+          <view class="topTitle" v-if="historySearch.length">
+            <view class="text">历史搜索</view>
+            <view class="icon" @click="removeHistory">
+              <uni-icons type="trash" size="25"></uni-icons>
+            </view>
+          </view>
+          <view class="tabs">
+            <view class="tab" v-for="tab in historySearch" :key="tab" @click="clickTab(tab)">{{ tab }}</view>
+          </view>
+        </view>
+        <!-- 搜索推荐 -->
+        <view class="text">热门发现</view>
+        <view class="topTitle">
+          <view class="tabs">
+            <view class="tab" v-for="row in hotsearch" :key="row._id" @click="clickTab(row.name)">{{ row.name }}
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 产品哦列表 -->
+      <view class="searclist" v-else>
+        <open-item v-for="item in searchdata" :key="item.id" :item="item"
+          @click="routerTo('/pages_fen/open/open-newsdetail?id='+item._id)"> </open-item>
+      </view>
+    </z-paging>
+  </view>
+</template>
+
+<script setup>
+  import {
+    routerTo
+  } from '@/utils/common';
+  const searchCloudObj = uniCloud.importObject("client-aopen");
+
+  import {
+    showToast
+  } from "@/utils/common.js";
+  const db = uniCloud.database();
+  const dbCmd = db.command;
+  const $ = dbCmd.aggregate;
+  const paging = ref(null);
+  const query = ref({
+    pageSize: 10,
+    pageCurrent: 1,
+    keyword: ""
+  })
+  const nodata = ref(false);
+  const searchdata = ref([]); //商品数组
+  const historySearch = ref(uni.getStorageSync("historySearch") || []); //历史记录
+  const hotsearch = ref([]); //热门搜索
+
+  onLoad(async () => {
+
+  });
+  //点击搜索
+  const onSearch = () => {
+    historySearch.value = [
+      ...new Set([query.value.keyword, ...historySearch.value]),
+    ].slice(0, 12);
+    uni.setStorageSync("historySearch", historySearch.value);
+    paging.value.reload();
+  };
+  // 请求数据
+  const queryList = async (pageCurrent, pageSize) => {
+    try {
+      query.value = {
+        ...query.value,
+        pageCurrent,
+        pageSize
+      };
+      let {
+        errCode,
+        data
+      } = await searchCloudObj.searchlist(unref(query));
+      if (errCode !== 0) return paging.value.complete(false);
+      paging.value.complete(data);
+    } catch (err) {
+      paging.value.complete(false);
+    }
+  };
+
+  // 清空
+  const onClear = () => {
+    clear();
+  };
+  // 公共清空方法
+  const clear = () => {};
+  // 标签 搜索
+  const clickTab = (tab) => {
+    clear();
+    query.value.keyword = tab;
+    onSearch();
+  };
+  //历史记录清空
+  const removeHistory = () => {
+    uni.showModal({
+      title: "清空历史搜索？",
+      success: (res) => {
+        if (res.confirm) {
+          uni.removeStorageSync("historySearch");
+          historySearch.value = [];
+        }
+      },
+    });
+  };
+</script>
+
+<style lang="scss" scoped>
+  .searchLayout {
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .search {
+        width: 100%;
+      }
+
+      .ssclick {
+        flex: 0.3;
+        font-size: 45rpx;
+        color: red;
+      }
+    }
+
+    .topTitle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 32rpx;
+      color: #333;
+    }
+
+    .history {
+      padding: 30rpx;
+    }
+
+    .recommend {
+      padding: 30rpx;
+    }
+
+    .tabs {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-top: 5rpx;
+
+      .tab {
+        background: #f4f4f4;
+        font-size: 35rpx;
+        color: #333;
+        padding: 10rpx 28rpx;
+        border-radius: 50rpx;
+        margin-right: 10rpx;
+        margin-top: 10rpx;
+      }
+    }
+
+    .list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5rpx;
+      padding: 20rpx 5rpx;
+
+      .item {
+        height: 440rpx;
+
+        image {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+      }
+    }
+  }
+</style>

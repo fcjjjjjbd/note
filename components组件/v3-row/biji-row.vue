@@ -16,7 +16,10 @@
   import {} from "@/utils/common.js"
   // 接收父页面数据,函数里如何使用 props.item._id  html{{item._id}}
   const props = defineProps({
-    item: Object,
+    comments: {
+      type: Object,
+      default: () => ({})
+    },
     item: {
       type: Object,
       default () {
@@ -27,10 +30,7 @@
         }
       }
     },
-    comments: {
-      type: Object,
-      default: () => ({})
-    },
+
     isMore: {
       type: Boolean,
       default: false
