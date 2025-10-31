@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path')
 module.exports = {
-  // 统一 - 支付回调地址,格式为 "服务空间ID":"URL化地址"
+  // 支付文档https://blog.csdn.net/qq_18798149/article/details/151727409
+  // 线上环境服务空间-支付回调地址（如果只有一个服务空间，则只需要配置线上环境服务空间即可）
   "notifyUrl": {
-    // 线上环境服务空间-支付回调地址（如果只有一个服务空间，则只需要配置线上环境服务空间即可）
-    "mp-809a65a0-175d-4ce6-b53d-81522f24f79b": "https://fc-mp-809a65a0-175d-4ce6-b53d-81522f24f79b.next.bspapp.com/uni-pay-co",
+    "mp-809a65a0-175d-4ce6-b53d-81522f24f79b": "https://fc-mp-809a65a0-175d-4ce6-b53d-81522f24f79b.next.bspapp.com/uni-pay-co"
   },
   "notifyKey": "5FB2CD73C7B53918728417C50762E6D45FB2CD73C7B53918728417C50762E6D4", // 跨云函数通信时的加密密钥，建议手动改下，不要使用默认的密钥，长度保持在64位以上即可
   // 微信支付相关
@@ -92,8 +92,8 @@ module.exports = {
     },
     // 支付宝 - APP支付配置
     "app": {
-      "appId": "", // 支付宝开放平台下应用的appid
-      "privateKey": "", // 支付宝商户私钥
+      "appId": "2021004108648743", // 支付宝开放平台下应用的appid
+      "privateKey": "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDcFJf84MQxqxTFrefXusAdxMpH0f/Qm+oPu9F6Cs3oZndY9nhdNioPMsUX6Vi74SPl5JDxbMtolI7tA0WqOHgS8UG9LZmlQSp8cGjVq7SkgLWNnq7aur0eKf6NQk4KcmA9pYVG4jhjoSce+3TT3Njmv4XzfxIiwYnknY6oJtWBaOUVEdObw8Y2jeii0FaxHbTDYvfAgMuRBXOp5bFGSCrS6snjzldrwojphVzeQlr4JaMkp74/bWB+xhJh8y3ff+rrXPp400DuZEFlTauCDm/svpo42XPUhCC2ofZvyWc5TXEqbEKbPAfUMPb+gtla7KbSI2SXI4pWlqcRNt5wIoPlAgMBAAECggEAKxB8jScOPQnVDrlw3G3Wmfyf+F3HSPK5YkrGOrNSh19Fi0rvUo3+vOqaVot6qYjslVecZSF8zAIF1asGPsC9/jbnPjVmE0glICR+3xCyUF4/KG8cmABicTyWat3Gl5S58FYrNiueDSDDnvRlb++PIdfoRjVfPx3P9cQ+3fh7Xs7i0OxTHvgz97+SS1DfZgCuWMTYa8fwfSBYSmcCpMopsvgany90Te4QgZ/iNl7fdKRxvdJy9yrDomQnqL/HnjqIVTP+uNQMgtyyIhK8A5kF4BZQxLlfon520iaZnoC3bY57rb5yjIkCZWvz9lLg+8dyLx/podBHIO1UAZ74ijUuIQKBgQD1+TdB/P63ArY/P8vBk3ZBzetKi3UiexHt5upDawvMR7YgXA8XfWQfMmp+JQbt6vkWeIKMBQ8P6wO8gDmwrZVXGZI3EOauFKB7aSz4fzRGAH5reLnOUHqvauIcx7zReqjmX61msXZ/WIZf4RDliEagykeiVaiPAma91u1iN+GpNwKBgQDlDS2xLNY/l76MQ35hPFClE21ul5LXdR28KimkPQlLmL6IKsKIpahisdO6BvwReQ3CckACmt904tCq53woHUWirUs+cFU7CX25jYSM4EGezS9loHXMPuyrkwcAXJ+14QUi5vhYa4mBzpV7cP3dLBKAOuu2uQ7YfXXrzcp66ynZwwKBgQC/ZAU9EVBYsoGAQXGX09fmaAW24UBpbf2LcWvCvZ5We04Za8hKbMTlCWOXd9Qmd/kNJQPfU2he6Gzl1ZgOA2L6fOkqc7oqpd4haLsXOFNCTMwRb8ST5kcwCyiZYElpbdnSN4xDJb6gZA9at1NgZmMeZYbLp38al7G98WiQTg8GjQKBgHI0uPSfe5AntC2xtYD8FuXIIwdCckgVsCbTCwJGIK1d0pqIX4jMuIHFUuFtfB+mMTMjzkC+Qe7A7PRaCXDi74amS18tmYGfQN3U7yNi6bUpb5mHgVS+hzkhTRtkE4oXUX1OlsNXky9y9tuewiWWRP9E4aSw7vMI01Qovu289ZgLAoGAFNNIcpVOIs6SkISh69XSQIAtUf0hEh//x7E07T1MoYsAN8jnS+l64oNF/WReot3G6GQedtEupVfmU7HI0XcHeRBlL8n7hCq61RzhmQLqP/lhnhHBsyFzeQPhdjijgj6/uky9SXsYA4fQWycFbc78SPvZbNDtgj2C+QZ/7iaTuSo=", // 支付宝商户私钥
       "appCertPath": path.join(__dirname, 'alipay/appCertPublicKey.crt'), // 支付宝商户公钥路径
       "alipayPublicCertPath": path.join(__dirname, 'alipay/alipayCertPublicKey_RSA2.crt'), // 支付宝公钥路径
       "alipayRootCertPath": path.join(__dirname, 'alipay/alipayRootCert.crt'), // 支付宝根证书路径
