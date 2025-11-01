@@ -1,11 +1,15 @@
 <!-- console.log()  <view class=""> </view> for()行动做到 错1改1 转恶0为善1 -->
 npm用法
 <template>
+  npm i express 下载模块名
+  npm uninstall express 卸载模块名
+  npm install -g pnpm
+  pnpm init
+
   <view class="Layout">
-    npm i express 下载模块名
-    npm uninstall express 卸载模块名
-    npm install -g pnpm
-    pnpm init
+    npm:
+    工具类函数库xe-utils, lodash
+
 
     pinia持久化存储
     npm i pinia-plugin-persistedstate
