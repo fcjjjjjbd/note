@@ -12,13 +12,9 @@
       } = await db.collection('goods-chicken').aggregate()
         .lookup({
           from: 'books',
-          let: {
-            order_book: '$book',
-            order_quantity: '$quantity'
-          },
           pipeline: $.pipeline()
             .match(dbCmd.expr($.and([ //条件都满足
-              $.eq(['$title', '$$order_book']),
+              $.eq(['$title', '$$order_book']), //$lookup关联表字段,$$主表字段
               $.eq(['$goods_id', '$$uid']),
               $.gte(['$total_fee', 600])
             ])))
@@ -28,7 +24,7 @@
         .lookup({
           from: "goods-lastread",
           let: {
-            goodid: '$_id'
+            goodid: '$_id' //$_id主表里_id=goodid变量名
           },
           pipeline: $.pipeline().match(dbCmd.expr($.eq(['$user_id', userinfoid])))
             .project({

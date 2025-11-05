@@ -72,88 +72,62 @@
         }
 
         //jql联表查询
-        const get = async () => {
-          const collectdd = db.collection('collect_g').where(` user_id ==$cloudEnv_uid `).getTemp();
-          const detaill = db.collection('goods_detail').field(
-              "_id, address,  collect_count, goods_thumb,like_count,title")
-            .getTemp();
-          let {
-            result: {
-              data,
-              errCode
-            }
-          } = await db.collection(collectdd, detaill).field(`
-      arrayElemAt(goods_id._id, 0) as _id, //数组里[0]对象转化一个对象
-      arrayElemAt(goods_id.title, 0) as title,
-      arrayElemAt(goods_id.address, 0) as address,
-      arrayElemAt(goods_id.collect_count, 0) as collect_count,
-      arrayElemAt(goods_id.goods_thumb, 0) as goods_thumb,
-      arrayElemAt(goods_id.like_count, 0) as like_count
-      `).orderBy("publish_date", "desc").get();
-        }
-
-        //解构默认值,别名
-        const get = async () => {
+        async list({
+            pageSize = 10,
+            pageCurrent = 1,
+            keyword = ""
+          } = {}) {
+            try {
+              pageSize = Math.min(100, pageSize);
+              pageCurrent = (pageCurrent - 1) * pageSize;
+              let wre = keyword ? `${new RegExp(keyword, 'i')}.test(title)` : {}
+              let listTemp = dbJQL.collection("JLJ-news-articles")
+                .where(wre)
+                .orderBy("publish_date desc")
+                .skip(pageCurrent)
+                .limit(pageSize)
+                .getTemp();
+              let userTemp = dbJQL.collection("uni-id-users").where(`user_id ==$cloudEnv_uid`).field("_id,nickname")
+                .getTemp();
               let {
-                result: {
-                  data,
-                  errCode,
-                  errCode
-                } = {}
-              } = db.collection("jubao_item").get()
-
-              const onSubmit = async () => {
-                try {
-                  disabled.value = true;
-                  uni.showLoading({
-                    title: "提交中"
-                  })
-                  formData.value.content = removeHtmlTags(formData.value.content);
-                  if (formData.value.content === "") return showToast('鸡汤内容不能为空', "none", false);
-                  let errCode, res
-                  let {
-                    soup_type,
-                    status,
-                    content,
-                    from
-                  } = formData.value;
-                  let _formData = {
-                    soup_type,
-                    status: 0,
-                    content,
-                    from,
-                    last_modify_date: Date.now()
-                  };
-                  if (id) {
-                    res = await db.collection("soup-chicken").doc(id).update(_formData);
-                  } else {
-                    res = await db.collection("soup-chicken").add(formData.value);
-                  }
-                  errCode = res.result.errCode;
-
-
-                  if (errCode === 0) {
-                    uni.$emit("soupUpdate", {
-                      msg: "更新了"
-                    });
-                    showToast("发表成功", "success");
-                    setTimeout(() => uni.navigateBack(), 1000)
-                  }
-                } catch (e) {
-                  showToast(e.errMsg, "error")
-                } finally {
-                  uni.hideLoading();
-                  disabled.value = false;
-                }
-                let {
-                  result: {
-                    data,
-                    errCode
-                  }
-                } = await db.collection("add-soup").where(`
-          status==${statearr[props.tabindex].value} && is_delete != true
-    `).get();
-              }
+                errCode,
+                data,
+                count,
+                errMsg
+              } = await dbJQL.collection(listTemp, userTemp)
+                .field(`
+        		arrayElemAt(goods_id._id, 0) as _id, //数组里[0]对象转化一个对象
+        		arrayElemAt(goods_id.title, 0) as title,
+        		arrayElemAt(goods_id.address, 0) as address,
+        		arrayElemAt(goods_id.collect_count, 0) as collect_count,
+        		arrayElemAt(goods_id.goods_thumb, 0) as goods_thumb,
+        		arrayElemAt(goods_id.like_count, 0) as like_count
+        		`)
+                .field(
+                  `_id,arrayElemAt(user_id.nickname,0) as nickname,title,article_status,view_count,is_sticky,avatar,publish_date`
+                  ).get({
+                  getCount: true
+                });
+              if (errCode !== 0) return result({
+                errCode: 400,
+                errMsg: "error",
+                custom: errMsg
+              });
+              return result({
+                errCode: 0,
+                errMsg: "success",
+                data,
+                total: count
+              });
+            } catch (err) {
+              return result({
+                errCode: 500,
+                errMsg: "bug",
+                custom: err
+              })
+            }
+          },
+          const get = async () => {
 </script>
 <template>
 </template>
