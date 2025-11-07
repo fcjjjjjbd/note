@@ -42,6 +42,8 @@
       }
     }
   })
+ const newItem = ref(props.item); //不能直接修改父组件数据
+
   // 组件向外暴露函数,数据
   defineExpose({
     message,

@@ -302,6 +302,12 @@
       {
         "navigationBarTitleText" : ""
       }
+    },
+    {
+      "path": "pages/like/like",
+      "style": {
+        "navigationBarTitleText": ""
+      }
     }
   ],
   // 底部导航
@@ -369,14 +375,18 @@
   },
 
   // 需要登录才能进入页面 .*全部字段
-  "uniIdRouter": {
-    // #ifdef MP-WEIXIN
-    "loginPage": "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
-    // #endif
+"uniIdRouter": {
     // #ifndef MP-WEIXIN
     "loginPage": "uni_modules/uni-id-pages/pages/login/login-withpwd",
     // #endif
-    "needLogin": ["pages/goods/.*", "pages/detail/.*"],
-    "resToLogin": true
+    // #ifdef MP-WEIXIN
+    "loginPage": "pages/login/login",
+    // #endif
+    "needLogin": [
+      "pages/self/.*",
+      "pages/order/myorderlist",
+      "pages_fen/advpay/edit",
+      "pages_fen/open/edit"
+    ]
   }
 }

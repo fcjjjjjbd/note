@@ -1,38 +1,8 @@
 <!--分类页面 console.log() plus-filled  -->
 <template>
   <view class="self">
-    <view class="add" @click="addclick"><uni-icons type="plus-filled " size="40"></uni-icons>
-      添加</view>
 
-    <view class="content">
-      <view class="item" v-for="item in list1" :key="item._id">
-        <view class="">
-          {{item.sort}} {{item.title}}
-        </view>
 
-        <view class="info">
-          <view @click="updataff(item.title,item._id)"><uni-icons type="compose" size="30"></uni-icons>
-          </view>
-          <view @click.stop="removeff(item._id)"><uni-icons type="trash" size="30"></uni-icons>
-          </view>
-        </view>
-      </view>
-    </view>
-    <uni-popup ref="navPopup" type="top">
-      <view class="ppcss">
-        <view class="row-add">
-          <text class="label">标题</text>
-          <textarea class="textarea" v-model="dsobj.title"></textarea>
-        </view>
-        <view class="row">
-          <text class="label">序号</text>
-          <input border="surround" maxlength="20" clearable type="text" v-model="dsobj.sort"></input>
-        </view>
-        <view class="tijiao"><button type="primary" @click="nameConfirm">提交</button></view>
-
-      </view>
-
-    </uni-popup>
 
   </view>
 </template>
@@ -107,59 +77,79 @@
 </script>
 
 <style lang="scss" scoped>
-  .self {
-    padding: 30rpx;
+  .top {
+    height: 300rpx;
+    background: #bbb;
+    padding: 0 30rpx;
+    padding-top: var(--status-bar-height);
+    position: relative;
+    display: flex;
+    align-items: center;
 
-    .add {
-      @include flex-box-set();
-      font-size: 50rpx;
-      padding-bottom: 20rpx
-    }
-
-    .content {
+    .group {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       width: 100%;
+      color: #fff;
 
-      background-color: #fff;
+      .userinfo {
+        display: flex;
+        width: 100%;
+        align-items: center;
 
-      border-radius: 8rpx;
+        .pic {
+          width: 120rpx;
+          height: 120rpx;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 2px solid #fff;
 
-      .item {
-        letter-spacing: 4rpx;
-        font-size: 34rpx;
-        font-weight: bold;
-        border-bottom: 1rpx solid $text-font-color-3;
-        padding-bottom: 28rpx;
+          image {
+            width: 100%;
+            height: 100%;
+          }
+        }
 
-        .info {
-          display: flex;
+        .text {
+          padding-left: 20rpx;
+
+          .nickname {
+            font-size: 44rpx;
+            font-weight: 600;
+          }
+
+          .year {
+            font-size: 26rpx;
+            opacity: 0.6;
+            padding-top: 5rpx;
+          }
+        }
+      }
+
+      .more {
+        .iconfont {
+          font-size: 40rpx;
         }
       }
     }
 
-    .ppcss {
-      background: #fff;
-      padding: 20rpx;
-      border-radius: 30rpx 30rpx 0 0;
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
-      font-size: 28rpx;
 
-      .row-add {
-        display: flex;
-        flex-direction: column;
-        padding: 20rpx 0;
-        font-size: 40rpx;
-        font-weight: bold;
-
-      }
-
-      .row {
-        display: flex;
-        font-size: 40rpx;
-        font-weight: bold;
-
-        .label {
-          margin-right: 40rpx;
-        }
+      image {
+        width: 100%;
+        height: 100%;
+        filter: blur(20px);
+        transform: scale(2);
+        opacity: 0.5;
       }
     }
   }

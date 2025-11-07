@@ -1,13 +1,16 @@
 <template>
+  <view>
   uni聚合=微信聚合文档
   https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloud/reference-sdk-api/database/Command.html
-  仅用于复杂查询，不可执行增删改
+  仅用于复杂查询，不可执行增删改,大量查询不如jql
+    addFields拼接多个字段值 tv7 .2 / 13
+  $ 1 字段路径 字段属性值
+  pipeline里可以嵌套lookup
+
+</view>
 </template>
 
 <script>
-  addFields拼接多个字段值 tv7 .2 / 13
-  $ 1 字段路径 字段属性值
-  pipeline里可以嵌套lookup
 
     .lookup({
         pipeline: $.pipeline().match(dbCmd.expr($.eq(['$reply_parent_id', '$$uuid']))) = jql where
@@ -25,17 +28,12 @@
           .lookup({ // 联表查询方法
             from: "uni-id-users", // 关联哪个表
             let: {
-              uid: '$user_id' // 变量,soup-chicken关联关系的字段
+              uid: '$user_id' // 变量,主表关联关系的字段
             },
             // $.pipeline()在aggregate里开启管道操作
             pipeline: $.pipeline().match(dbCmd.expr($.eq(['$_id',
                 '$$uid'
               ]))) // eq比较相等true的返回，dbCmd.expr（符合条件的筛选出来)
-              .project({
-                = filed
-                username: 1,
-                avatar: 1,
-              })
               .count('length')
               .done(), // $当前from里的表聚合操作符 $$当前的变量uid pipeline()开启一个管道
             as: "userinfo" //新增关联别名
@@ -57,12 +55,14 @@
             then: 0.7,
             else: 0.9
           })
-        $.and([ //所有条件都满足/match
+        $.and([ //所有条件都满足
           $.eq(['$like_type', 0]),
           $.eq(['$user_id', current_id]),
           $.eq(['$soup_id', '$$goodsid'])
         ])
         .project({ //过滤 = field
+           collect: $.multiply(['$collect_count', '$numa']), //乘法
+        
           content: 1,
           from: 1,
           userInfo: $.arrayElemAt(['$userinfo', 0]) //arrayElemAt（）把uid数组[0]对象直接解构对象， 同名覆盖原来的

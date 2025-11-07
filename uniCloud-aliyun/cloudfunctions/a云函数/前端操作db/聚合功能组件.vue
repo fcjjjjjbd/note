@@ -13,8 +13,8 @@
         .lookup({
           from: 'books',
           pipeline: $.pipeline()
-            .match(dbCmd.expr($.and([ //条件都满足
-              $.eq(['$title', '$$order_book']), //$lookup关联表字段,$$主表字段
+            .match(dbCmd.expr($.and([ 
+              $.eq(['$title', '$$order_book']),
               $.eq(['$goods_id', '$$uid']),
               $.gte(['$total_fee', 600])
             ])))
@@ -24,7 +24,7 @@
         .lookup({
           from: "goods-lastread",
           let: {
-            goodid: '$_id' //$_id主表里_id=goodid变量名
+            goodid: '$_id'
           },
           pipeline: $.pipeline().match(dbCmd.expr($.eq(['$user_id', userinfoid])))
             .project({
@@ -67,7 +67,8 @@
           numa: 5
         })
         .project({
-          collect: $.multiply(['$collect_count', '$numa']), //乘法
+          collect: $.multiply(['$collect_count', '$numa']), 
+
           collect_count: $.cond({
             if: $.gte(['$amount', 200]),
             then: 0.7,
@@ -99,15 +100,13 @@
       listData.value = data
       if (errCode != 0) return showToast("信息有误，请重新刷新", "none");
     }
-
-    // 销量个数>5元
-    .lookup({
+  .lookup({
       from: "goods_orders",
       let: {
         uid: '$_id'
       },
       pipeline: $.pipeline()
-        .match(dbCmd.expr($.and([ //条件都满足
+        .match(dbCmd.expr($.and([ 
           $.eq(['$goods_id', '$$uid']),
           $.gte(['$total_fee', 600])
         ])))
@@ -125,10 +124,8 @@
     .addFields({
       orderlength: $.ifNull(['$orderlength', 0]),
     })
-    .addFields({
-      orderlengths: $.multiply(['$orderlength', 3]), //订单数*3分数
-
-    })
+ 
+    
 </script>
 <template>
 </template>
