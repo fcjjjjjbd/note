@@ -1,7 +1,7 @@
 <!-- 下拉刷新模板 -->
 <template>
   <view class="home">
-    <z-paging ref="paging" v-model="dataList" @query="queryList" :default-page-size="4" empty-view-text="无数据">
+    <z-paging ref="paging" v-model="dataList" @query="queryList" :default-page-size="8" >
       <!-- 一开始req加载状态 -->
       <template #loading>
         <view style="padding:60rpx;">
@@ -28,8 +28,7 @@
   import {
     showToast
   } from "@/utils/common.js";
-  const db = uniCloud.database();
-  const addcloubobj = uniCloud.importObject("goods-backend")
+    const addcloubobj = uniCloud.importObject("goods-backend")
 
   const paging = ref(null)
   const dataList = ref([])
@@ -38,33 +37,20 @@
   const queryList = async (pageNo, pageSize) => {
     getgoodsList(pageNo, pageSize);
   }
-  const getgoodsList = async (pageNo, pageSize) => {
-    let skip = (pageNo - 1) * pageSize
-    try {
+ const searchVal = ref("")
+const dataList  = ref([])
+const paging = ref(null);
 
-      console.log()
-      return;
-      uni.showLoading({
-        mask: true
-      });
-      let {
-        errCode,
-        errMsg,
-        data
-      } = await tjcloubobj.getrj();
-      console.log(data)
-      if (errCode !== 0) return showToast({
-        title: errMsg
-      });
-      paging.value.complete(data);
-    } catch (err) {
-      showToast({
-        title: err
-      });
-    } finally {
-      uni.hideLoading();
-    }
-  }
+const queryList = async(pageCurrent, pageSize)=>{
+	try{
+		let {errCode,data} = await goodsCloudObj.goodsList({pageCurrent,pageSize,keyword:unref(searchVal)})
+		if(errCode!==0) return paging.value.complete(false);
+		paging.value.complete(data);
+	}catch(err){
+		paging.value.complete(false);
+		console.log(err);
+	}	
+}
 </script>
 
 <style lang="scss" scoped>

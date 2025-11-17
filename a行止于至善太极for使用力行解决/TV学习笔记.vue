@@ -2,6 +2,7 @@
   
   下拉框分类 uni - data - select xm - csdn
   数据库数据导入导出 tv - admin3 .3
+  3.2添加图标到详情页
   用户联系微信客服(开发者) soup10 .2 / 3.40
   nextTick() jt6 .10 / 7
   app全局常用的方法引入globalPropert jt6 .10 / 9.19

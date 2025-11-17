@@ -9,7 +9,16 @@
     ,截屏windows+shift+s
     搜索:ctrl+shift+f(工作区文件搜索),ctrl+f当前页面,ctrl+p搜索文件目录
 
+工具
+下载视频yt-dlp(环境变量下载)
+https://funglearn.top/00620250301-2/
+-F类型选择 -f id
+yt-dlp -o  "\C:\TV/%(title)s.%(ext)s" -f 30080  https://www.bilibili.com/video/BV1z34y1V7TZ
 
+远程桌面控制工具RustDesk
+https://funglearn.top/0130525-2/
+国外视频本地实时字幕AI实时翻译
+https://funglearn.top/00720250307-2/
   </view>
 </template>
 
