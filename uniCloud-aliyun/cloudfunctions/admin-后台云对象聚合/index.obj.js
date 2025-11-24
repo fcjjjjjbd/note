@@ -1,5 +1,10 @@
 updata, remove要备份, git后操作
 let dbJQL = uniCloud.databaseForJQL()
+const cmd = dbJQL.command; //运算符
+const db = uniCloud.database();
+const _dbcmd = db.command;
+
+
 let {
   result
 } = require("utils");
