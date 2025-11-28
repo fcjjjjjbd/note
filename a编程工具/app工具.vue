@@ -4,7 +4,6 @@
     方法,实战需要使用1学1(大致了解),专一1致百0,知1行1
 
     工具:uniapp生态,远程向日葵,desktop(git图形),小米传输文件,apipost,bandizip,claudecode(cc-switch),语音输入法(WisprFlow)
-
     快捷键
     隐藏显示目录ctrl+b,代码终端ctrl+j,呼起Aictrl+u,语音输入widow+h
     ,截屏windows+shift+s

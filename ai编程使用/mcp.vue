@@ -1,1 +1,3 @@
-git
+github操作git
+contenxt7和browsermcp，可以加快网站类产品的开发效率，
+context7 可以引入最新的代码库知识，而browsermcp，它可以让你的 cc/trae 直接打开你的浏览器去查看内容！
