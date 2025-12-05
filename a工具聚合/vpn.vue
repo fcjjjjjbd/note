@@ -10,9 +10,8 @@
 <template>
   <view class="">
     vpn翻墙集合
-    https://ikuuu.de/user/shop
     https://jichanggo.com/
-    https://jstofu.com/2023-eight-best-windows-accelerators-recommended.html
+ 
 
   </view>
 </template>
